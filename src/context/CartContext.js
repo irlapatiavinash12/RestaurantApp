@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RestaurantContext = React.createContext({
+const CartContext = React.createContext({
   cartlist: [],
   removeAllCartItems: () => {},
   addCartItem: () => {},
@@ -9,4 +9,4 @@ const RestaurantContext = React.createContext({
   decrementCartItemQuantity: () => {},
 })
 
-export default RestaurantContext
+export default CartContext

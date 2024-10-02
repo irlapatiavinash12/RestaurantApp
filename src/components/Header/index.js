@@ -1,46 +1,46 @@
+import {useContext} from 'react'
+import {Link, withRouter} from 'react-router-dom'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
+import Cookies from 'js-cookie'
+
+import CartContext from '../../context/CartContext'
+
 import './index.css'
 
-import {Link, withRouter} from 'react-router-dom'
-
-import {IoCartOutline} from 'react-icons/io5'
-
-import {useContext} from 'react'
-
-import Cookie from 'js-cookie'
-
-import RestaurantContext from '../../context/RestaurantContext'
-
 const Header = props => {
-  const {cartList} = useContext(RestaurantContext)
-  console.log(cartList)
-  const renderCartIcon = () => (
-    <button className="cart-icon-container" data-testid="cart">
-      <IoCartOutline className="cart-sizing" />
-      <p className="cart-count">{cartList.length}</p>
-    </button>
-  )
+  const {cartList, restaurantName} = useContext(CartContext)
 
   const onLogout = () => {
     const {history} = props
-    Cookie.remove('jwt_token')
+    Cookies.remove('jwt_token')
     history.replace('/login')
   }
+
+  const renderCartIcon = () => (
+    <div className="cart-icon-link">
+      <Link to="/cart">
+        <button type="button" className="cart-icon-button" data-testid="cart">
+          <AiOutlineShoppingCart className="cart-icon" />
+        </button>
+      </Link>
+      <div className="cart-count-badge">
+        <p className="cart-count">{cartList.length}</p>
+      </div>
+    </div>
+  )
 
   return (
     <header className="nav-header">
       <Link to="/" className="link-styling">
         <h1 className="logo-heading">UNI Resto Cafe</h1>
       </Link>
-      <Link to="/cart" className="link-styling">
-        <div className="cart-compartment">
-          <p className="my-orders-text">My Orders</p>
-
-          {renderCartIcon()}
-        </div>
-      </Link>
-      <button type="button" className="logout-button" onClick={onLogout}>
-        LogOut
-      </button>
+      <div className="my-orders-container">
+        <p className="my-orders-text">My Orders</p>
+        <button type="button" className="logout-button" onClick={onLogout}>
+          Logout
+        </button>
+        {renderCartIcon()}
+      </div>
     </header>
   )
 }

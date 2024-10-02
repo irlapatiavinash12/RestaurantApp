@@ -49,6 +49,9 @@
   position: absolute;
   top: -15px;
   right: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cart-count {
@@ -62,6 +65,7 @@
   min-width: 25px;
   height: 25px;
   border-radius: 50%;
+  margin-right: 10px;
 }
 
 .link-styling {
@@ -77,4 +81,27 @@
   height: 40px;
   border: none;
   border-radius: 3px;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+.my-orders-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cart-icon-link {
+  height: 40px;
+}
+
+
+.cart-icon-button{
+  height: 60px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 60px;
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
