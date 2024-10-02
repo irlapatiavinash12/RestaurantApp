@@ -1,10 +1,12 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useContext} from 'react'
 
 import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
 
 import DishItem from '../DishItem'
+
+import RestaurantContext from '../../context/RestaurantContext'
 
 import './index.css'
 

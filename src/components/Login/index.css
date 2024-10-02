@@ -1,0 +1,24 @@
+.login-main-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  height: 400px;
+  width: 400px;
+  background-color: mintcream;
+  border: 1px solid #ffffff;
+}
+
+.error_msg {
+  color: red;
+  font-family: 'Roboto';
+}

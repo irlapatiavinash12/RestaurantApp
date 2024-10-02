@@ -34,6 +34,9 @@
   position: relative;
   display: flex;
   flex-direction: row;
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
 
 .cart-sizing {
@@ -59,4 +62,19 @@
   min-width: 25px;
   height: 25px;
   border-radius: 50%;
+}
+
+.link-styling {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logout-button {
+  background-color: blue;
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-weight: 600;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
 }

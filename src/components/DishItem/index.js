@@ -1,4 +1,8 @@
+import {useContext} from 'react'
+
 import './index.css'
+
+import RestaurantContext from '../../context/RestaurantContext'
 
 const DishItem = ({
   dishDetails,
@@ -6,6 +10,8 @@ const DishItem = ({
   addItemToCart,
   removeItemFromCart,
 }) => {
+  const {addCartItem} = useContext(RestaurantContext)
+
   const {
     dishId,
     dishName,
@@ -19,6 +25,10 @@ const DishItem = ({
     dishAvailability,
   } = dishDetails
   console.log(dishAvailability)
+
+  const onClickAddToCart = () => {
+    addCartItem({...dishDetails, quantity: 1})
+  }
 
   const onIncreaseQuantity = () => addItemToCart(dishDetails)
   const onDecreaseQuantity = () => removeItemFromCart(dishDetails)
@@ -42,9 +52,7 @@ const DishItem = ({
 
   return (
     <li className="dish-item-container">
-      <div
-        className={`veg-border ${dishType === 1 ? 'non-veg-border' : ''} `}
-      >
+      <div className={`veg-border ${dishType === 1 ? 'non-veg-border' : ''} `}>
         <div className={`veg-round ${dishType === 1 ? 'non-veg-round' : ''}`} />
       </div>
       <div className="dish-details-container">
@@ -54,6 +62,11 @@ const DishItem = ({
         </p>
         <p className="dish-description">{dishDescription}</p>
         {dishAvailability && renderControllerButton()}
+        {dishAvailability && (
+          <button className="add-cart-button" onClick={onClickAddToCart}>
+            ADD TO CART
+          </button>
+        )}
         {!dishAvailability && (
           <p className="not-availability-text text-danger">Not available</p>
         )}
